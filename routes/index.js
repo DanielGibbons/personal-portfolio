@@ -13,9 +13,12 @@ router.get('/about', function (req, res, next) {
 });
 
 router.get('/posts', function (req, res, next) {
-	viewData = new ViewData('Posts', 'posts')
 	res.render('posts', { viewData: new ViewData('Posts', 'posts') });
 });
 
+
+router.get('/projects', function (req, res, next) {
+	res.render('projects', { viewData: new ViewData('Projects', 'projects') });
+});
 
 module.exports = router;

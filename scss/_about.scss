@@ -1,0 +1,36 @@
+.about-container {
+
+	.mugshot {
+
+		width: 50%;
+		margin: 10px auto;
+
+		img {
+			width: 100%;
+			height: auto;
+			border-radius: 50%;
+			padding: 2px;
+			border: 2px solid lighten(#2e2e2e, 35%);
+		}
+	}
+
+	.site-description {
+		text-align: center;
+		font-size: 1.7rem;
+		font-weight: 300;
+		margin-bottom: 15px;
+		margin-top: 25px;
+	}
+
+}
+
+@media (min-width: 576px) {
+
+	.about-container {
+		.site-description {
+			margin-top: 0px;
+			margin-bottom: 0px;
+		}
+	}
+
+}

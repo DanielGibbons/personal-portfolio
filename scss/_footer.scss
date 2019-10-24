@@ -1,0 +1,55 @@
+.custom-footer {
+
+	background: $charcoal-grey;
+	padding-top: 30px;
+	padding-bottom: 30px;
+
+	.social-media-container {
+		display: flex;
+		justify-content: center;
+		width: 45%;
+		margin: 0px auto;
+
+		.social-media {
+
+			padding-left: 15px;
+			padding-right: 15px;
+
+			a {
+				color: #fff;
+				font-size: 3.2rem;
+				icon {
+					transition: all 200ms ease-in-out;
+				}
+			}
+			a:hover {
+				color: darken(#fff, 30%);
+				icon {
+					transform: scale(1.2);
+				}
+			}
+		}
+	}
+
+	.copyright-notice {
+		color: #fff;
+		font-size: 2rem;
+		text-align: center;
+		margin-top: 10px;
+	}
+
+	.scroll-top-arrow-container {
+		color: #fff;
+		font-size: 4rem;
+		text-align: center;
+		margin-top: 10px;
+
+		.scroll-top-arrow {
+			transition: all 200ms ease-in-out;
+		}
+
+		.scroll-top-arrow:hover {
+			transform: scale(1.2);
+		}
+	}
+}

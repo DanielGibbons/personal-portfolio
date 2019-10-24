@@ -1,10 +1,47 @@
 @import 'fonts';
 @import 'colours';
 
+html {
+	font-size: 62.5%;
+}
+
 body {
 	font-family: 'Raleway', sans-serif;
 }
 
 .page {
-	margin-top: 56px;
+	position: relative;
+	z-index: 500;
+	top: 87.25px;
+	margin-bottom: 87.25px;
+}
+
+.view {
+	padding: 50px 0px;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.page-title-container {
+	text-align: center;
+
+	.page-title {
+		display: inline-block;
+		font-size: 3rem;
+		font-weight: 600;
+		margin-bottom: 25px;
+		border-bottom: 4px solid #ff0000;
+	}
+}
+
+@media (min-width: 576px) { 
+
+	.page-title-container {
+		text-align: left;
+
+		.page-title {
+			margin-left: 10%;
+		}
+	}
 }

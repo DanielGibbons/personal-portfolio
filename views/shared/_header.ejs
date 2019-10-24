@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap/bootstrap-grid.min.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<script src="https://kit.fontawesome.com/38f3a720bf.js"></script>
 	<title>
 		<%=viewData.title%>
 	</title>
@@ -16,7 +17,7 @@
 
 <body>
 
-	<nav class="container navbar fixed-top navbar-expand-lg navbar-light bg-white">
+	<nav class="container navbar fixed-top custom-navbar navbar-expand-lg navbar-light bg-white">
 		<a class="navbar-brand" href="/">dangibbons.io</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 		 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,12 +35,21 @@
 				<li class="nav-item <%- (viewData.action == 'posts') ? 'active' : '' -%>">
 					<a class="nav-link" href="/posts">Posts</a>
 				</li>
+				<li class="nav-item <%- (viewData.action == 'projects') ? 'active' : '' -%>">
+					<a class="nav-link" href="/projects">Projects</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
 
-
+	<div class="color-bar">
+		<div class="bar bar-1"></div>
+		<div class="bar bar-2"></div>
+		<div class="bar bar-3"></div>
+		<div class="bar bar-4"></div>
+		<div class="bar bar-5"></div>
+		<div class="bar bar-6"></div>
+	</div>
 
 	<div class="page">
-		<hr class="navbar-line" />
-		<div class="container">
+		<div class="container view">
