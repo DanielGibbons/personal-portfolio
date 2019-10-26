@@ -9,6 +9,10 @@
 	<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap/bootstrap-grid.min.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+	<link rel="manifest" href="images/favicon/site.webmanifest">
 	<script src="https://kit.fontawesome.com/38f3a720bf.js"></script>
 	<title>
 		<%=viewData.title%>
@@ -32,8 +36,8 @@
 				<li class="nav-item <%- (viewData.action == 'about') ? 'active' : '' -%>">
 					<a class="nav-link" href="/about">About</a>
 				</li>
-				<li class="nav-item <%- (viewData.action == 'posts') ? 'active' : '' -%>">
-					<a class="nav-link" href="/posts">Posts</a>
+				<li class="nav-item <%- (viewData.action == 'blog') ? 'active' : '' -%>">
+					<a class="nav-link" href="/blog">Blog</a>
 				</li>
 				<li class="nav-item <%- (viewData.action == 'projects') ? 'active' : '' -%>">
 					<a class="nav-link" href="/projects">Projects</a>
