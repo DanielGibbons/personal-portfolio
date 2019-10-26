@@ -148,3 +148,56 @@ body {
   .about-container .site-description {
     margin-top: 0px;
     margin-bottom: 0px; } }
+
+.blog-container .posts-container {
+  margin-top: 10px;
+  margin-left: 5%;
+  margin-right: 5%; }
+  .blog-container .posts-container a {
+    all: unset;
+    cursor: pointer; }
+  .blog-container .posts-container .post {
+    transition: all 200ms ease-in-out;
+    padding: 10px;
+    border: 2px solid #717171;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 4%; }
+    .blog-container .posts-container .post .title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 5px 0px; }
+    .blog-container .posts-container .post .date {
+      font-size: 2rem;
+      margin: 5px 0px; }
+    .blog-container .posts-container .post .tags-container {
+      margin: 4px 0px; }
+      .blog-container .posts-container .post .tags-container .tag {
+        display: inline-block;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 3px;
+        padding: 2px;
+        margin: 4px 2.5px;
+        color: #585858; }
+        .blog-container .posts-container .post .tags-container .tag .tag-icon {
+          display: inline-block;
+          font-size: 1.2rem; }
+        .blog-container .posts-container .post .tags-container .tag .tag-name {
+          display: inline-block;
+          font-size: 1.2rem;
+          margin: 0px 0px; }
+        .blog-container .posts-container .post .tags-container .tag.first-post {
+          border-color: #ffb733;
+          background-color: #ffedcc; }
+        .blog-container .posts-container .post .tags-container .tag.second-post {
+          border-color: #00b300;
+          background-color: #4dff4d; }
+        .blog-container .posts-container .post .tags-container .tag.first-tag {
+          border-color: #ff3333;
+          background-color: #ffcccc; }
+        .blog-container .posts-container .post .tags-container .tag.second-tag {
+          border-color: #3333ff;
+          background-color: #ccccff; }
+  .blog-container .posts-container .post:hover {
+    transform: scale(1.05); }

@@ -10,24 +10,28 @@
 
 	<div class="posts-container">
 		<% blogPosts.forEach(function(post) { %>
-		<div class="post">
-			<p class="title">
-				<%= post.title %>
-			</p>
-			<p class="date">
-				<%= post.date %>
-			</p>
-			<p class="link">
-				<a href="/blog/<%= post.id %>">Go To Post</a>
-			</p>
-			<div class="tags-container">
-				<% post.tags.forEach(function(tag) { %>
-				<div class="tag">
-					<%= tag %>
+		<a href="/blog/<%= post.id %>">
+			<div class="post">
+				<p class="title">
+					<%= post.title %>
+				</p>
+				<p class="date">
+					<%= post.date %>
+				</p>
+				<div class="tags-container">
+					<% post.tags.forEach(function(tag) { %>
+					<div class="tag <%= tag.replace(/\s+/g, '-').toLowerCase() %>">
+						<div class="tag-icon">
+							<icon class="fas fa-tags"></icon>
+						</div>
+						<p class="tag-name">
+							<%= tag %>
+						</p>
+					</div>
+					<% }); %>
 				</div>
-				<% }); %>
 			</div>
-		</div>
+		</a>
 		<% }); %>
 	</div>
 </div>
