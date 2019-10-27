@@ -27,6 +27,76 @@ body {
     padding-bottom: 5px;
     border-bottom: 4px solid #ff0000; }
 
+.custom-column {
+  padding: 15px; }
+
+.custom-border {
+  transition: all 200ms ease-in-out;
+  padding: 10px;
+  border: 2px solid #717171;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2); }
+
+.tags-container {
+  margin: 4px 0px; }
+  .tags-container .tag {
+    display: inline-block;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    padding: 2px;
+    margin: 4px 2.5px;
+    color: #585858; }
+    .tags-container .tag .tag-icon {
+      display: inline-block;
+      font-size: 1.2rem; }
+    .tags-container .tag .tag-name {
+      display: inline-block;
+      font-size: 1.2rem;
+      margin: 0px 0px; }
+    .tags-container .tag.arm {
+      border-color: #ffb733;
+      background-color: #ffedcc; }
+    .tags-container .tag.cortex-m {
+      border-color: #ff3333;
+      background-color: #ffcccc; }
+    .tags-container .tag.java {
+      border-color: #00b300;
+      background-color: #4dff4d; }
+    .tags-container .tag.android {
+      border-color: #ff3333;
+      background-color: #ffcccc; }
+    .tags-container .tag.python {
+      border-color: #3333ff;
+      background-color: #ccccff; }
+    .tags-container .tag.opencv {
+      border-color: #cc3636;
+      background-color: #ebb0b0; }
+    .tags-container .tag.ml {
+      border-color: #6ce7db;
+      background-color: #f0fcfb; }
+    .tags-container .tag.cmsis-nn {
+      border-color: #b300b3;
+      background-color: #ff4dff; }
+    .tags-container .tag.azure {
+      border-color: #b300b3;
+      background-color: #ff4dff; }
+    .tags-container .tag.terraform {
+      border-color: #00b300;
+      background-color: #4dff4d; }
+    .tags-container .tag.devops {
+      border-color: #3333ff;
+      background-color: #ccccff; }
+    .tags-container .tag.node.js {
+      border-color: #b300b3;
+      background-color: #ff4dff; }
+    .tags-container .tag.scss {
+      border-color: #00b300;
+      background-color: #4dff4d; }
+    .tags-container .tag.bootstrap-4 {
+      border-color: #3333ff;
+      background-color: #ccccff; }
+
 @media (min-width: 576px) {
   .page-title-container {
     text-align: left; }
@@ -91,6 +161,10 @@ body {
   .color-bar .bar-6 {
     border-top: 4px solid #9b59b6; }
 
+@media (min-width: 991px) {
+  .color-bar {
+    top: 83.25px; } }
+
 .custom-footer {
   background: #3e3e3e;
   padding-top: 30px;
@@ -127,15 +201,74 @@ body {
     .custom-footer .scroll-top-arrow-container .scroll-top-arrow:hover {
       transform: scale(1.2); }
 
+.blog-header-container div.breadcrumb-container {
+  background-color: #e4e4e4;
+  height: auto; }
+  .blog-header-container div.breadcrumb-container ol.breadcrumb {
+    background-color: #e4e4e4;
+    display: table;
+    margin-top: 10px;
+    font-size: 1.7rem; }
+    .blog-header-container div.breadcrumb-container ol.breadcrumb .breadcrumb-item {
+      padding: 5px;
+      display: table-cell;
+      vertical-align: middle; }
+      .blog-header-container div.breadcrumb-container ol.breadcrumb .breadcrumb-item a {
+        all: unset;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 600;
+        color: #3e3e3e;
+        padding: 5px;
+        position: relative; }
+      .blog-header-container div.breadcrumb-container ol.breadcrumb .breadcrumb-item a:after {
+        background: none repeat scroll 0 0 transparent;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        background: #000;
+        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+        width: 0; }
+      .blog-header-container div.breadcrumb-container ol.breadcrumb .breadcrumb-item a:hover:after {
+        width: 100%;
+        left: 0; }
+
+.blog-header-container .title {
+  display: inline-block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 4px solid #ff0000; }
+
+.blog-header-container .date {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 5px; }
+
 .about-container .mugshot {
   width: 50%;
   margin: 10px auto; }
   .about-container .mugshot img {
     width: 100%;
     height: auto;
-    border-radius: 50%;
     padding: 2px;
-    border: 2px solid #878787; }
+    border: 2px solid #717171;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2); }
+
+.about-container .about-description {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 300;
+  margin-bottom: 15px;
+  margin-top: 25px; }
+  .about-container .about-description icon {
+    color: #f00; }
 
 .about-container .site-description {
   text-align: center;
@@ -143,61 +276,69 @@ body {
   font-weight: 300;
   margin-bottom: 15px;
   margin-top: 25px; }
+  .about-container .site-description strong {
+    font-weight: 700; }
 
 @media (min-width: 576px) {
-  .about-container .site-description {
+  .about-container .about-description {
     margin-top: 0px;
     margin-bottom: 0px; } }
 
-.blog-container .posts-container {
+.posts-container {
   margin-top: 10px;
   margin-left: 5%;
   margin-right: 5%; }
-  .blog-container .posts-container a {
+  .posts-container .post a {
     all: unset;
     cursor: pointer; }
-  .blog-container .posts-container .post {
-    transition: all 200ms ease-in-out;
-    padding: 10px;
-    border: 2px solid #717171;
-    border-radius: 10px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 4%; }
-    .blog-container .posts-container .post .title {
-      font-size: 2.5rem;
-      font-weight: 600;
-      margin: 5px 0px; }
-    .blog-container .posts-container .post .date {
-      font-size: 2rem;
-      margin: 5px 0px; }
-    .blog-container .posts-container .post .tags-container {
-      margin: 4px 0px; }
-      .blog-container .posts-container .post .tags-container .tag {
-        display: inline-block;
-        border-style: solid;
-        border-width: 1px;
-        border-radius: 3px;
-        padding: 2px;
-        margin: 4px 2.5px;
-        color: #585858; }
-        .blog-container .posts-container .post .tags-container .tag .tag-icon {
-          display: inline-block;
-          font-size: 1.2rem; }
-        .blog-container .posts-container .post .tags-container .tag .tag-name {
-          display: inline-block;
-          font-size: 1.2rem;
-          margin: 0px 0px; }
-        .blog-container .posts-container .post .tags-container .tag.first-post {
-          border-color: #ffb733;
-          background-color: #ffedcc; }
-        .blog-container .posts-container .post .tags-container .tag.second-post {
-          border-color: #00b300;
-          background-color: #4dff4d; }
-        .blog-container .posts-container .post .tags-container .tag.first-tag {
-          border-color: #ff3333;
-          background-color: #ffcccc; }
-        .blog-container .posts-container .post .tags-container .tag.second-tag {
-          border-color: #3333ff;
-          background-color: #ccccff; }
-  .blog-container .posts-container .post:hover {
+  .posts-container .post .title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 5px 0px; }
+  .posts-container .post .date {
+    font-size: 2rem;
+    margin: 5px 0px; }
+  .posts-container .post .description {
+    font-size: 1.7rem;
+    margin: 5px 0px; }
+  .posts-container .post:hover {
     transform: scale(1.05); }
+
+.projects-container {
+  margin-top: 10px;
+  margin-left: 5%;
+  margin-right: 5%; }
+  .projects-container a {
+    all: unset;
+    cursor: pointer; }
+  .projects-container .project .title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 5px 0px; }
+  .projects-container .project .description {
+    font-size: 1.7rem;
+    margin: 5px 0px; }
+  .projects-container .project .social-media .github {
+    color: #3e3e3e;
+    font-size: 2.5rem; }
+  .projects-container .project .social-media .github:hover {
+    color: #8b8b8b; }
+  .projects-container .project .social-media .youtube {
+    color: #f00;
+    font-size: 2.5rem; }
+  .projects-container .project .social-media .youtube:hover {
+    color: #ff9999; }
+
+.playground-container .playground-description {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 300;
+  margin-bottom: 15px;
+  margin-top: 25px; }
+  .playground-container .playground-description strong {
+    font-weight: 700; }
+
+.blog-post-container {
+  padding: 25px; }
+  .blog-post-container .blog-text {
+    font-size: 1.7rem; }

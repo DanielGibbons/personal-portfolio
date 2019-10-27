@@ -36,6 +36,116 @@ body {
 	}
 }
 
+.custom-column {
+	padding: 15px;
+}
+
+.custom-border{
+	transition: all 200ms ease-in-out;
+	padding: 10px;
+	border: 2px solid lighten($charcoal-grey, 20%);
+	border-radius: 10px;
+	box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
+}
+
+.tags-container {
+
+	margin: 4px 0px;
+
+	.tag {
+
+		display: inline-block;
+		border-style: solid;
+		border-width: 1px;
+		border-radius: 3px;
+		padding: 2px;
+		margin: 4px 2.5px;
+		color:lighten($charcoal-grey, 10%);
+
+		.tag-icon {
+			display: inline-block;
+			font-size: 1.2rem;
+		}
+
+		.tag-name {
+			display: inline-block;
+			font-size: 1.2rem;
+			margin: 0px 0px;
+		}
+
+		&.arm {
+			border-color: lighten(orange, 10%);
+			background-color: lighten(orange, 40%);
+		}
+
+		&.cortex-m {
+			border-color: lighten(red, 10%);
+			background-color: lighten(red, 40%);
+		}
+
+		&.java {
+			border-color: lighten(green, 10%);
+			background-color: lighten(green, 40%);
+		}
+
+		&.android {
+			border-color: lighten(red, 10%);
+			background-color: lighten(red, 40%);
+		}
+
+		&.python {
+			border-color: lighten(blue, 10%);
+			background-color: lighten(blue, 40%);
+		}
+
+		&.opencv {
+			border-color: lighten(brown, 10%);
+			background-color: lighten(brown, 40%);
+		}
+
+		&.ml {
+			border-color: lighten(turquoise, 10%);
+			background-color: lighten(turquoise, 40%);
+		}
+
+		&.cmsis-nn {
+			border-color: lighten(purple, 10%);
+			background-color: lighten(purple, 40%);
+		}
+
+		&.azure {
+			border-color: lighten(purple, 10%);
+			background-color: lighten(purple, 40%);
+		}
+
+		&.terraform {
+			border-color: lighten(green, 10%);
+			background-color: lighten(green, 40%);
+		}
+
+		&.devops{
+			border-color: lighten(blue, 10%);
+			background-color: lighten(blue, 40%);
+		}
+
+		&.node.js {
+			border-color: lighten(purple, 10%);
+			background-color: lighten(purple, 40%);
+		}
+
+		&.scss {
+			border-color: lighten(green, 10%);
+			background-color: lighten(green, 40%);
+		}
+
+		&.bootstrap-4{
+			border-color: lighten(blue, 10%);
+			background-color: lighten(blue, 40%);
+		}
+	}
+
+}
+
 @media (min-width: 576px) { 
 
 	.page-title-container {

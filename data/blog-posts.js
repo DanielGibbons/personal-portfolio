@@ -1,42 +1,14 @@
-var blogPosts = [
+var blogPosts = {
 
-	{
-		id: '2019-10-26-00',
-		title: 'First Blog Post',
+	BP_2019_10_26_00: {
+		id: 'BP_2019_10_26_00',
+		title: 'Provisioning Resources in Azure using Terraform',
 		date: '26/10/2019',
-		tags: ['first tag', 'first post']
-	},
-	{
-		id: '2019-10-26-01',
-		title: 'Second Blog Post',
-		date: '26/10/2019',
-		tags: ['second tag', 'second post']
-	},
-	{
-		id: '2019-10-26-01',
-		title: 'Second Blog Post',
-		date: '26/10/2019',
-		tags: ['second tag', 'second post']
-	},
-	{
-		id: '2019-10-26-01',
-		title: 'Second Blog Post',
-		date: '26/10/2019',
-		tags: ['second tag', 'second post']
-	},
-	{
-		id: '2019-10-26-01',
-		title: 'Second Blog Post',
-		date: '26/10/2019',
-		tags: ['second tag', 'second post']
-	},
-	{
-		id: '2019-10-26-01',
-		title: 'Second Blog Post',
-		date: '26/10/2019',
-		tags: ['second tag', 'second post']
+		description: "A guide for getting started with Terraform and provisioning your first Azure resources \
+					  in the cloud.",
+		tags: ['Azure', 'Terraform', 'DevOps']
 	}
 
-]
+}
 
 module.exports = blogPosts;

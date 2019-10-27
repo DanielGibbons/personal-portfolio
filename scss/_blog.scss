@@ -1,87 +1,36 @@
-.blog-container {
+.posts-container {
 
-	.posts-container {
+	margin-top: 10px;
+	margin-left: 5%;
+	margin-right: 5%;
 
-		margin-top: 10px;
-		margin-left: 5%;
-		margin-right: 5%;
+	.post {
 
 		a {
 			all: unset;
 			cursor: pointer;
 		}
 
-		.post {
-			transition: all 200ms ease-in-out;
-			padding: 10px;
-			border: 2px solid lighten($charcoal-grey, 20%);
-			border-radius: 10px;
-			box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
-			margin-bottom: 4%;
-
-			.title {
-				font-size: 2.5rem;
-				font-weight: 600;
-				margin: 5px 0px;
-			}
-
-			.date {
-				font-size: 2rem;
-				margin: 5px 0px;
-			}
-
-			.tags-container {
-
-				margin: 4px 0px;
-
-				.tag {
-
-					display: inline-block;
-					border-style: solid;
-					border-width: 1px;
-					border-radius: 3px;
-					padding: 2px;
-					margin: 4px 2.5px;
-					color:lighten($charcoal-grey, 10%);
-
-					.tag-icon {
-						display: inline-block;
-						font-size: 1.2rem;
-					}
-
-					.tag-name {
-						display: inline-block;
-						font-size: 1.2rem;
-						margin: 0px 0px;
-					}
-
-					&.first-post {
-						border-color: lighten(orange, 10%);
-						background-color: lighten(orange, 40%);
-					}
-
-					&.second-post {
-						border-color: lighten(green, 10%);
-						background-color: lighten(green, 40%);
-					}
-
-					&.first-tag {
-						border-color: lighten(red, 10%);
-						background-color: lighten(red, 40%);
-					}
-
-					&.second-tag {
-						border-color: lighten(blue, 10%);
-						background-color: lighten(blue, 40%);
-					}
-				}
-
-			}
+		.title {
+			font-size: 2.5rem;
+			font-weight: 600;
+			margin: 5px 0px;
 		}
 
-		.post:hover {
-			transform: scale(1.05);
+		.date {
+			font-size: 2rem;
+			margin: 5px 0px;
+		}
+
+		.description {
+			font-size: 1.7rem;
+			margin: 5px 0px;
 		}
 
 	}
+
+	.post:hover {
+		transform: scale(1.05);
+	}
+
 }

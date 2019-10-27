@@ -1,27 +1,32 @@
 var express = require('express');
 var ViewData = require('../models/view-data.js');
 var blogPosts = require('../data/blog-posts.js')
+var projects = require('../data/projects.js')
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-	res.render('index', { viewData: new ViewData('dangibbons.io', 'home') });
-});
-
 /* GET about page. */
-router.get('/about', function (req, res, next) {
-	viewData = new ViewData('About', 'about')
-	res.render('about', { viewData: new ViewData('About', 'about') });
+router.get('/', function (req, res, next) {
+	res.render('index', { viewData: new ViewData('About', 'about') });
 });
 
-/* GET blog page. */
+/* GET blog posts page. */
 router.get('/blog', function (req, res, next) {
 	res.render('blog', { viewData: new ViewData('Blog', 'blog'), blogPosts: blogPosts });
 });
 
+/* GET blog page. */
+router.get('/blog/:blogId', function (req, res, next) {
+	res.render(`blog/${req.params.blogId}`, { viewData: new ViewData(`Blog - ${blogPosts[req.params.blogId].id}`, 'blog'), blogData: blogPosts[req.params.blogId] });
+});
+
 /* GET projects page. */
 router.get('/projects', function (req, res, next) {
-	res.render('projects', { viewData: new ViewData('Projects', 'projects') });
+	res.render('projects', { viewData: new ViewData('Projects', 'projects'), projects: projects });
+});
+
+/* GET playground page. */
+router.get('/playground', function (req, res, next) {
+	res.render('playground', { viewData: new ViewData('Playground', 'playground') });
 });
 
 module.exports = router;

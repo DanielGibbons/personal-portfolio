@@ -1,0 +1,67 @@
+@import 'colours';
+
+.blog-header-container {
+
+	div.breadcrumb-container {
+		background-color: lighten($charcoal-grey, 65%);
+		height: auto;
+
+		ol.breadcrumb {
+			background-color: lighten($charcoal-grey, 65%);
+			display: table;
+			margin-top: 10px;
+			font-size: 1.7rem;
+
+			.breadcrumb-item {
+
+				a {
+					all: unset;
+					cursor: pointer;
+					display: inline-block;
+					font-weight: 600;
+					color: $charcoal-grey;
+					padding: 5px;
+					position: relative;
+				}
+				a:after {    
+					background: none repeat scroll 0 0 transparent;
+					bottom: 0;
+					content: "";
+					display: block;
+					height: 2px;
+					left: 50%;
+					position: absolute;
+					background: #000;
+					transition: width 0.3s ease 0s, left 0.3s ease 0s;
+					width: 0;
+				}
+				a:hover:after { 
+					width: 100%; 
+					left: 0; 
+				}
+
+				padding: 5px;
+				display: table-cell;
+				vertical-align: middle;
+			}
+		}
+
+	}
+
+	.title {
+		display: inline-block;
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-top: 15px;
+		margin-bottom: 5px;
+		padding-bottom: 5px;
+		border-bottom: 4px solid #ff0000;
+	}
+
+	.date {
+		font-size: 2rem;
+		font-weight: 600;
+		margin-top: 5px;
+	}
+	
+}

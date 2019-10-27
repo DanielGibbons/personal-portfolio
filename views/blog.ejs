@@ -1,37 +1,41 @@
 <%- include('shared/_header.ejs', {viewData: viewData}) %>
 
-<div class="blog-container">
+<div class="page-title-container">
+	<h1 class="page-title">
+		Blog
+	</h1>
+</div>
 
-	<div class="page-title-container">
-		<h1 class="page-title">
-			Blog
-		</h1>
-	</div>
-
-	<div class="posts-container">
-		<% blogPosts.forEach(function(post) { %>
-		<a href="/blog/<%= post.id %>">
-			<div class="post">
-				<p class="title">
-					<%= post.title %>
-				</p>
-				<p class="date">
-					<%= post.date %>
-				</p>
-				<div class="tags-container">
-					<% post.tags.forEach(function(tag) { %>
-					<div class="tag <%= tag.replace(/\s+/g, '-').toLowerCase() %>">
-						<div class="tag-icon">
-							<icon class="fas fa-tags"></icon>
+<div class="posts-container">
+	<div class="row justify-content-center">
+		<% Object.keys(blogPosts).forEach(function(blogId){  %>
+		<div class="custom-column col-12 col-sm-6">
+			<div class="post custom-border">
+				<a href="/blog/<%= blogPosts[blogId].id %>">
+					<p class="title">
+						<%= blogPosts[blogId].title %>
+					</p>
+					<p class="date">
+						<%= blogPosts[blogId].date %>
+					</p>
+					<p class="description">
+						<%= blogPosts[blogId].description %>
+					</p>
+					<div class="tags-container">
+						<% blogPosts[blogId].tags.forEach(function(tag) { %>
+						<div class="tag <%= tag.replace(/\s+/g, '-').toLowerCase() %>">
+							<div class="tag-icon">
+								<icon class="fas fa-tags"></icon>
+							</div>
+							<p class="tag-name">
+								<%= tag %>
+							</p>
 						</div>
-						<p class="tag-name">
-							<%= tag %>
-						</p>
+						<% }); %>
 					</div>
-					<% }); %>
-				</div>
+				</a>
 			</div>
-		</a>
+		</div>
 		<% }); %>
 	</div>
 </div>

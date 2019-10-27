@@ -4,9 +4,11 @@
 // Partial Styles
 @import 'header';
 @import 'footer';
+@import 'blog-header';
 
 // View Styles
-@import 'home';
 @import 'about';
 @import 'blog';
-
+@import 'projects';
+@import 'playground';
+@import 'blog-post';
