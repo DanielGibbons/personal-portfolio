@@ -87,7 +87,7 @@ body {
     .tags-container .tag.devops {
       border-color: #3333ff;
       background-color: #ccccff; }
-    .tags-container .tag.node.js {
+    .tags-container .tag.nodejs {
       border-color: #b300b3;
       background-color: #ff4dff; }
     .tags-container .tag.scss {
@@ -201,19 +201,20 @@ body {
     .custom-footer .scroll-top-arrow-container .scroll-top-arrow:hover {
       transform: scale(1.2); }
 
-.blog-header-container div.breadcrumb-container {
+.blog-header-container .breadcrumb-container {
   background-color: #e4e4e4;
-  height: auto; }
-  .blog-header-container div.breadcrumb-container ol.breadcrumb {
+  height: auto;
+  border-radius: 10px; }
+  .blog-header-container .breadcrumb-container .breadcrumb {
     background-color: #e4e4e4;
     display: table;
     margin-top: 10px;
     font-size: 1.7rem; }
-    .blog-header-container div.breadcrumb-container ol.breadcrumb .breadcrumb-item {
+    .blog-header-container .breadcrumb-container .breadcrumb .breadcrumb-item {
       padding: 5px;
       display: table-cell;
       vertical-align: middle; }
-      .blog-header-container div.breadcrumb-container ol.breadcrumb .breadcrumb-item a {
+      .blog-header-container .breadcrumb-container .breadcrumb .breadcrumb-item a {
         all: unset;
         cursor: pointer;
         display: inline-block;
@@ -221,7 +222,7 @@ body {
         color: #3e3e3e;
         padding: 5px;
         position: relative; }
-      .blog-header-container div.breadcrumb-container ol.breadcrumb .breadcrumb-item a:after {
+      .blog-header-container .breadcrumb-container .breadcrumb .breadcrumb-item a:after {
         background: none repeat scroll 0 0 transparent;
         bottom: 0;
         content: "";
@@ -232,7 +233,7 @@ body {
         background: #000;
         transition: width 0.3s ease 0s, left 0.3s ease 0s;
         width: 0; }
-      .blog-header-container div.breadcrumb-container ol.breadcrumb .breadcrumb-item a:hover:after {
+      .blog-header-container .breadcrumb-container .breadcrumb .breadcrumb-item a:hover:after {
         width: 100%;
         left: 0; }
 
@@ -269,6 +270,8 @@ body {
   margin-top: 25px; }
   .about-container .about-description icon {
     color: #f00; }
+  .about-container .about-description a {
+    font-weight: 600; }
 
 .about-container .site-description {
   text-align: center;
@@ -339,6 +342,46 @@ body {
     font-weight: 700; }
 
 .blog-post-container {
-  padding: 25px; }
-  .blog-post-container .blog-text {
-    font-size: 1.7rem; }
+  padding: 25px 0px; }
+  .blog-post-container .sub-title {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 700;
+    padding-bottom: 5px;
+    margin-top: 15px;
+    margin-bottom: 10px; }
+  .blog-post-container ul {
+    list-style-type: square;
+    padding-left: 20px; }
+  .blog-post-container .body-text {
+    font-size: 1.7rem;
+    margin-bottom: 15px; }
+    .blog-post-container .body-text a {
+      font-weight: 600; }
+    .blog-post-container .body-text code {
+      padding: 2px;
+      background-color: #e4e4e4; }
+    .blog-post-container .body-text strong {
+      padding: 2px;
+      background-color: #e4e4e4; }
+  .blog-post-container .download-file-container {
+    text-align: center;
+    padding: 15px; }
+    .blog-post-container .download-file-container .filename {
+      font-family: 'Raleway', sans-serif;
+      text-align: center;
+      font-size: 1.7rem;
+      padding: 10px;
+      margin-bottom: 0px; }
+    .blog-post-container .download-file-container icon {
+      transition: all 200ms ease-in-out;
+      color: #3e3e3e;
+      font-size: 5.5rem; }
+    .blog-post-container .download-file-container icon:hover {
+      transform: scale(1.1); }
+
+@media (min-width: 576px) {
+  .blog-post-container {
+    padding: 25px 25px; }
+    .blog-post-container ul {
+      padding-left: 40px; } }

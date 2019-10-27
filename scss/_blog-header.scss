@@ -2,11 +2,12 @@
 
 .blog-header-container {
 
-	div.breadcrumb-container {
+	.breadcrumb-container {
 		background-color: lighten($charcoal-grey, 65%);
 		height: auto;
+		border-radius: 10px;
 
-		ol.breadcrumb {
+		.breadcrumb {
 			background-color: lighten($charcoal-grey, 65%);
 			display: table;
 			margin-top: 10px;

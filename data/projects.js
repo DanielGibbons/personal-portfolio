@@ -35,7 +35,7 @@ var projects = [
 		more detailed description regarding my reason for making it.",
 		github: "https://github.com/DanielGibbons/personal-website",
 		youtube: null,
-		tags: ['Node.js', 'SCSS', 'Bootstrap 4']
+		tags: ['NodeJS', 'SCSS', 'Bootstrap 4']
 	}
 ]
 
