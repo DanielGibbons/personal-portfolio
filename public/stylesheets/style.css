@@ -332,14 +332,23 @@ body {
   .projects-container .project .social-media .youtube:hover {
     color: #ff9999; }
 
-.playground-container .playground-description {
-  text-align: center;
-  font-size: 1.7rem;
-  font-weight: 300;
-  margin-bottom: 15px;
+.playground-container {
   margin-top: 25px; }
-  .playground-container .playground-description strong {
-    font-weight: 700; }
+  .playground-container .sub-title {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 2rem;
+    padding-bottom: 3px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ff0000; }
+  .playground-container .centre {
+    text-align: center; }
+  .playground-container .body-text {
+    font-size: 1.7rem;
+    font-weight: 300;
+    margin-bottom: 15px; }
+    .playground-container .body-text strong {
+      font-weight: 700; }
 
 .blog-post-container {
   padding: 25px 0px; }
@@ -385,3 +394,51 @@ body {
     padding: 25px 25px; }
     .blog-post-container ul {
       padding-left: 40px; } }
+
+.error-container {
+  height: 100vh;
+  background: #717171;
+  color: #fff;
+  text-align: center; }
+  .error-container h1 {
+    display: inline-block;
+    padding-top: 5vw;
+    font-size: 40vw;
+    font-weight: 600;
+    border-bottom: 4px solid #ff0000;
+    margin-bottom: 30px; }
+  .error-container h2 {
+    text-align: center;
+    font-size: 6vw;
+    font-weight: 500; }
+  .error-container p {
+    text-align: center;
+    font-size: 4vw;
+    font-weight: 300; }
+  .error-container .return-home-button {
+    margin-top: 30px;
+    text-align: center; }
+    .error-container .return-home-button a {
+      color: #fff;
+      background: #717171;
+      border-color: #fff;
+      border-radius: 10px;
+      border-width: 3px;
+      font-size: 6vw;
+      font-weight: 500;
+      transition: all .2s ease-in-out; }
+    .error-container .return-home-button a:hover {
+      transform: scale(1.1); }
+
+@media (min-width: 768px) {
+  .error-container h1 {
+    padding-top: 0px;
+    font-size: 20vw; }
+  .error-container h2 {
+    font-size: 3vw; }
+  .error-container p {
+    font-size: 2vw; }
+  .error-container .return-home-button {
+    margin-top: 50px; }
+    .error-container .return-home-button a {
+      font-size: 2vw; } }

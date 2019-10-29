@@ -1,15 +1,28 @@
 .playground-container {
 
-	.playground-description {
+	margin-top: 25px;
+
+	.sub-title {
+		display: inline-block;
+		font-weight: 700;
+		font-size: 2rem;
+		padding-bottom: 3px;
+		margin-bottom: 10px;
+		border-bottom: 2px solid #ff0000;
+	}
+
+	.centre {
+		text-align: center;
+	}
+
+	.body-text {
 
 		strong {
 			font-weight: 700;
 		}
 
-		text-align: center;
 		font-size: 1.7rem;
 		font-weight: 300;
 		margin-bottom: 15px;
-		margin-top: 25px;
 	}
 }

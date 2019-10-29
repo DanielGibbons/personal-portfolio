@@ -1,10 +1,16 @@
 <%- include('shared/_header-blank.ejs', {viewData: viewData}) %>
 
-<h1>
-	<%=message%>
-</h1>
-<h2>
-	<%=error.status%>
-</h2>
+<div class="error-container">
+	<h1>
+		<%=error.status%>
+	</h1>
+	<h2>Something's Gone Wrong</h2>
+	<p>
+		<%=message%>
+	</p>
+	<div class="return-home-button">
+		<a href="/" role="button" class="btn btn-default btn-lg">Home</a>
+	</div>
+</div>
 
 <%- include shared/_footer-blank.ejs %>
