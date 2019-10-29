@@ -30,6 +30,9 @@ body {
 .custom-column {
   padding: 15px; }
 
+.centre {
+  text-align: center; }
+
 .custom-border {
   transition: all 200ms ease-in-out;
   padding: 10px;
@@ -341,8 +344,6 @@ body {
     padding-bottom: 3px;
     margin-bottom: 10px;
     border-bottom: 2px solid #ff0000; }
-  .playground-container .centre {
-    text-align: center; }
   .playground-container .body-text {
     font-size: 1.7rem;
     font-weight: 300;
