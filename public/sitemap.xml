@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+	<url>
+		<loc>https://dangibbons.io/</loc>
+		<lastmod>20019-10-31</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://dangibbons.io/blog</loc>
+		<lastmod>20019-10-31</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://dangibbons.io/blog/BP_2019_10_26_00</loc>
+		<lastmod>20019-10-31</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://dangibbons.io/projects</loc>
+		<lastmod>20019-10-31</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://dangibbons.io/playground</loc>
+		<lastmod>20019-10-31</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.8</priority>
+	</url>
+
+</urlset> 
