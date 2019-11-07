@@ -146,6 +146,16 @@ body {
 			border-color: lighten(blue, 10%);
 			background-color: lighten(blue, 40%);
 		}
+
+		&.security {
+			border-color: lighten(orange, 10%);
+			background-color: lighten(orange, 40%);
+		}
+
+		&.ssl {
+			border-color: lighten(red, 10%);
+			background-color: lighten(red, 40%);
+		}
 	}
 
 }

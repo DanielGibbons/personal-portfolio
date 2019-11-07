@@ -99,6 +99,12 @@ body {
     .tags-container .tag.bootstrap-4 {
       border-color: #3333ff;
       background-color: #ccccff; }
+    .tags-container .tag.security {
+      border-color: #ffb733;
+      background-color: #ffedcc; }
+    .tags-container .tag.ssl {
+      border-color: #ff3333;
+      background-color: #ffcccc; }
 
 @media (min-width: 576px) {
   .page-title-container {
@@ -363,6 +369,23 @@ body {
   .blog-post-container ul {
     list-style-type: square;
     padding-left: 20px; }
+  .blog-post-container p {
+    padding-left: 20px; }
+  .blog-post-container .code-block {
+    background-color: #e4e4e4;
+    font-size: 1.4rem;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 10px; }
+    .blog-post-container .code-block p {
+      color: #e83e8c;
+      font-family: Mono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; }
+    .blog-post-container .code-block .indent-1 {
+      padding-left: 40px; }
+    .blog-post-container .code-block .indent-2 {
+      padding-left: 60px; }
   .blog-post-container .body-text {
     font-size: 1.7rem;
     margin-bottom: 15px; }

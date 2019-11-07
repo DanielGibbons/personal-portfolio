@@ -15,6 +15,31 @@
 		padding-left: 20px;
 	}
 
+	p {
+		padding-left: 20px;
+	}
+
+	.code-block {
+		background-color: lighten($charcoal-grey, 65%);
+		font-size: 1.4rem;
+		margin-left: 20px;
+		margin-right: 20px;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		padding: 10px;
+
+		p {
+			color: #e83e8c;
+			font-family: Mono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+		}
+		.indent-1 {
+			padding-left: 40px;
+		}
+		.indent-2 {
+			padding-left: 60px;
+		}
+	}
+
 	.body-text {
 		font-size: 1.7rem;
 		margin-bottom: 15px;

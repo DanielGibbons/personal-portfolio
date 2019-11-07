@@ -4,6 +4,19 @@
 
 <div class="blog-post-container">
 
+	<h2 class="sub-title">Overview</h2>
+	<p class="body-text">
+		Azure is a public cloud provided by Microsoft and is similar to other clouds you may be familiar with such as Amazon
+		Web Services
+		(AWS) and the Google Cloud Platform (GCP). All of these clouds allow you to host your web apps and services without
+		having to maintain your own hardware. In recent years there has been a huge increase in cloud adoption and as a
+		result a number of supporting technologies have been developed. One example of these technologies is <strong>Terraform</strong>
+		which allows you to describe your infrastructure as code (IaC) and automate the provisioning or destructuion of it.
+		This post will show you how to get started with provisioning resources using Terraform with Azure. It should also be
+		noted that Terraform isn't cloud specific and can be used with a range of cloud providers - making it a great
+		language to learn if you're interested in devops!
+	</p>
+
 	<h2 class="sub-title">Setup an Account with Microsoft Azure</h2>
 	<ul>
 		<li class="body-text">
@@ -38,54 +51,159 @@
 			it to authenticate your shell to allow Terraform to create and destroy your Azure account's resources.
 		</li>
 		<li class="body-text">
-			Download and run the following bash script from the shell session you will be using with Terraform. The script will
-			open a browser tab for you to login to your account. After logging in follow the instructions in the shell to set
-			the Azure subscription you want Terraform to provision resources in.
+			Copy the following bash script and save it in a file called <strong>azure-login.sh</strong>. Next run the script
+			from the shell session
+			you will be using with Terraform. The script will open a browser tab for you to login to your account. After logging
+			in follow the instructions in the shell to set
+			the Azure subscription you want Terraform to provision resources in. Make sure you keep the shell open to run your
+			Terraform commands from later on.
 		</li>
 	</ul>
 
-	<div class="download-file-container">
-		<a href="/blogs/BP_19_10_26_00/azure-login.sh" download>
-			<icon class="fas fa-file-code">
-				<p class="filename">
-					azure-login.sh
-				</p>
-			</icon>
-		</a>
+	<div class="code-block custom-border">
+		<p>echo -e "************************************"</p>
+		<p>echo -e "Authenticating Shell using Azure CLI"</p>
+		<p>echo -e "************************************\n"</p>
+
+		<p>subscriptions="$(az.cmd login -o tsv | awk 'BEGIN { FS = "\t" } ; { print $2 " | " $4 }')"</p>
+
+		<p>echo "Subscription ID | Subscription Name"</p>
+		<p>echo "------------------------------------ | ------------------------------------"</p>
+		<p>echo "$subscriptions"</p>
+
+		<p>echo -e "\nEnter Subscription ID:"</p>
+		<p>read azure_subscription</p>
+
+		<p>echo -e "Setting account subscription"</p>
+		<p>az.cmd account set --subscription="${azure_subscription}"</p>
 	</div>
 
 	<h2 class="sub-title">Provision Resources using Terraform</h2>
 	<ul>
 		<li class="body-text">
-			Download and extract <strong>terraform.zip</strong> to a directory of your choice.
+			Copy the following code into a <strong>main.tf</strong> file in a directory of your choice.
 		</li>
 	</ul>
-	<div class="download-file-container">
-		<a href="/blogs/BP_19_10_26_00/terraform.zip" download>
-			<icon class="fas fa-file-archive">
-				<p class="filename">
-					terraform.zip
-				</p>
-			</icon>
-		</a>
+
+	<div class="code-block custom-border">
+		<p>variable "prefix" {</p>
+		<p class="indent-1">default = "test-dgio"</p>
+		<p>}</p>
+
+		<p>resource "azurerm_resource_group" "test_rg" {</p>
+		<p class="indent-1">name = "${var.prefix}-rg"</p>
+		<p class="indent-1">location = "East US"</p>
+		<p>}</p>
+
+		<p>resource "azurerm_virtual_network" "test_vnet" {</p>
+		<p class="indent-1">name = "${var.prefix}-vnet"</p>
+		<p class="indent-1">address_space = ["10.0.0.0/24"]</p>
+		<p class="indent-1">location = "${azurerm_resource_group.test_rg.location}"</p>
+		<p class="indent-1">resource_group_name = "${azurerm_resource_group.test_rg.name}"</p>
+		<p>}</p>
+
+		<p>resource "azurerm_subnet" "test_subnet" {</p>
+		<p class="indent-1">name = "${var.prefix}-vnet"</p>
+		<p class="indent-1">resource_group_name = "${azurerm_resource_group.test_rg.name}"</p>
+		<p class="indent-1">virtual_network_name = "${azurerm_virtual_network.test_rg.name}"</p>
+		<p class="indent-1">address_prefix = "10.0.0.0/27"</p>
+		<p>}</p>
+
+		<p>resource "azurerm_public_ip" "test_pip" {</p>
+		<p class="indent-1">name = "${var.prefix}-pip"</p>
+		<p class="indent-1">location = "${azurerm_resource_group.test_rg.location}"</p>
+		<p class="indent-1">resource_group_name = "${azurerm_resource_group.test_rg.name}"</p>
+		<p class="indent-1">allocation_method   = "Static"</p>
+		<p>}</p>
+
+		<p>resource "azurerm_network_interface" "test_nic" {</p>
+		<p class="indent-1">name = "${var.prefix}-nic"</p>
+		<p class="indent-1">location = "${azurerm_resource_group.test_rg.location}"</p>
+		<p class="indent-1">resource_group_name = "${azurerm_resource_group.test_rg.name}"</p>
+
+		<p class="indent-1">ip_configuration {</p>
+		<p class="indent-2">name = "test-ipconfig"</p>
+		<p class="indent-2">subnet_id = "${azurerm_subnet.test_subnet.id}"</p>
+		<p class="indent-2">private_ip_address_allocation = "Dynamic"</p>
+		<p class="indent-2">public_ip_address_id = "${azurerm_public_ip.test_pip.id}"</p>
+		<p class="indent-1">}</p>
+		<p>}</p>
+
+		<p>resource "azurerm_network_security_group" "test_nsg" {</p>
+		<p class="indent-1">name = "${var.prefix}-nsg"</p>
+		<p class="indent-1">location = "${azurerm_resource_group.test_rg.location}"</p>
+		<p class="indent-1">resource_group_name = "${azurerm_resource_group.test_rg.name}"</p>
+		<p>}</p>
+		  
+		<p>resource "azurerm_network_security_rule" "test_nsr" {</p>
+		<p class="indent-1">name = "Allow_All_SSH_Inbound_VM"</p>
+		<p class="indent-1">priority = 100</p>
+		<p class="indent-1">direction = "Inbound"</p>
+		<p class="indent-1">access = "Allow"</p>
+		<p class="indent-1">protocol = "Tcp"</p>
+		<p class="indent-1">source_port_range = "*"</p>
+		<p class="indent-1">destination_port_range = "22"</p>
+		<p class="indent-1">source_address_prefix = "*"</p>
+		<p class="indent-1">destination_address_prefix = "*"</p>
+		<p class="indent-1">resource_group_name = "${azurerm_resource_group.test_rg.name}"</p>
+		<p class="indent-1">network_security_group_name = "${azurerm_network_security_group.test_nsg.name}"</p>
+		<p>}</p>
+
+		<p>resource "azurerm_virtual_machine" "test_vm" {</p>
+		<p class="indent-1">name = "${var.prefix}-vm"</p>
+		<p class="indent-1">location = "${azurerm_resource_group.test_rg.location}"</p>
+		<p class="indent-1">resource_group_name = "${azurerm_resource_group.test_rg.name}"</p>
+		<p class="indent-1">network_interface_ids = ["${azurerm_network_interface.test_rg.id}"]</p>
+		<p class="indent-1">vm_size = "Standard_DS1_v2"</p>
+
+		<p class="indent-1">delete_os_disk_on_termination = true</p>
+		<p class="indent-1">delete_data_disks_on_termination = true</p>
+		<p class="indent-1">network_security_group_id = "${azurerm_network_security_group.test_nsg.id}"</p>
+
+		<p class="indent-1">storage_image_reference {</p>
+		<p class="indent-2">publisher = "Canonical"</p>
+		<p class="indent-2">offer = "UbuntuServer"</p>
+		<p class="indent-2">sku = "18.04-LTS"</p>
+		<p class="indent-2">version = "latest"</p>
+		<p class="indent-1">}</p>
+
+		<p class="indent-1">storage_os_disk {</p>
+		<p class="indent-2">name = "${var.prefix}-osdisk"</p>
+		<p class="indent-2">caching = "ReadWrite"</p>
+		<p class="indent-2">create_option = "FromImage"</p>
+		<p class="indent-2">managed_disk_type = "Standard_LRS"</p>
+		<p class="indent-1">}</p>
+
+		<p class="indent-1">os_profile {</p>
+		<p class="indent-2">computer_name = "${var.prefix}-vm"</p>
+		<p class="indent-2">admin_username = "testadmin"</p>
+		<p class="indent-2">admin_password = "Password1234!"</p>
+		<p class="indent-1">}</p>
+
+		<p class="indent-1">os_profile_linux_config {</p>
+		<p class="indent-2">disable_password_authentication = false</p>
+		<p class="indent-1">}</p>
+		<p>}</p>
 	</div>
+
 	<ul>
 		<li class="body-text">
-			Using the shell you ran <strong>azure-login.sh</strong> from <code>cd</code> into the directory where <strong>terraform.zip</strong>
-			was extracted. From here run <code>terraform plan</code> where you will see the resources Terraform has interpreted
+			The code above will create a Virtual Machine that you'll be able to SSH in to.
+		</li>
+		<li class="body-text">
+			Using the shell you ran <strong>azure-login.sh</strong> from <code>cd</code> into the directory where you saved
+			<strong>main.tf</strong>. From here run <code>terraform plan</code> where you will see the resources Terraform has
+			interpreted
 			you want from reading the <strong>main.tf</strong> file.
 		</li>
 		<li class="body-text">
 			Next run <code>terraform apply</code>. This will provision the resources outlined from the plan and you can see the
 			resources by visiting the Azure Portal.
 		</li>
+		<li class="body-text">
+			Using an SSH client of your choice connect to the Virtual Machine you've just provisioned. You'll find the Public IP in the Azure Portal.
+		</li>
 	</ul>
-
-
-
-
-
-
 
 </div>
 
