@@ -381,8 +381,7 @@ body {
     .blog-post-container .body-text a {
       font-weight: 600; }
     .blog-post-container .body-text code {
-      padding: 2px;
-      background-color: #e4e4e4; }
+      padding: 2px; }
     .blog-post-container .body-text strong {
       padding: 2px;
       background-color: #e4e4e4; }

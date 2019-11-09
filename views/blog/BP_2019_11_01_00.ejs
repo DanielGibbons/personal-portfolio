@@ -6,9 +6,9 @@
 
 	<h2 class="sub-title">Overview</h2>
 	<p class="body-text">
-		On the web, the Hyper Text Transfer Protocol (HTTP) has been the primary protocol for requesting and delivering
+		On the web, the <strong>Hyper Text Transfer Protocol (HTTP)</strong> has been the primary protocol for requesting and delivering
 		hypermedia documents such as web pages for years, although it is not encrypted and therefore unsecure. The solution
-		to this insecurity is HTTPS. HTTPS is effectively HTTP with security which utilises Transport Layer Security (TLS) to
+		to this insecurity is <strong>HTTPS</strong>. HTTPS is effectively HTTP with security which utilises <strong>Transport Layer Security (TLS)</strong> to
 		encrypt the transfer of data through the use of certificates. This security protocol involves three components - a
 		certificate authority, a private key and a public certificate. The certificate authority is a company like GoDaddy or
 		LetsEncrypt which has been approved to verify domains and issue secure signed certificates and keys. The private key
@@ -36,45 +36,48 @@
 	<h2 class="sub-title">Downloading Certificates</h2>
 	<p class="body-text">
 		This is the slightly confusing bit (or at least I thought so). You'll have a number of download options such as
-		Apache or IIS although I'd recommend you download the 'other' option. In this package you'll get a 'crt' file, a
-		'pem' file and a bundle certificate authority 'crt' file. Copy the contents of this folder so that these certificates
-		are in the same directory as the private key and CSR you previously downloaded.
+		<strong>Apache</strong> or <strong>IIS</strong> although I'd recommend you download the 'other' option. In this package you'll get a <strong>crt</strong> file, a
+		<strong>pem</strong> file and a certificate authority <strong>crt</strong> file. Copy the contents of this folder so that these certificates
+		are in the same directory as the <strong>private key</strong> and <strong>CSR</strong> you previously downloaded.
 	</p>
 
 	<h2 class="sub-title">Creating a PFX Certificate</h2>
 	<p class="body-text">
-		In your directory you should now have 2 public certificates - a 'crt' and a 'pem' which for all intents and purposes
+		In your directory you should now have 2 public certificates - a <strong>crt</strong> and a <strong>pem</strong> which for all intents and purposes
 		are equivalent. You'll also have a 'bundle' certificate authority - mine was called <strong>g2_bundle-g2-g1.crt</strong>
-		and a private
-		key file and a CSR file.
+		and a <strong>private key</strong>  file and a <strong>CSR</strong> file.
 	</p>
 	<ul>
 		<li class="body-text">
-			Now run the following command:
+			Now run the following command replacing the certificates and key names with your filenames:
 		</li>
 	</ul>
-	<p class="body-text">
-		<code>openssl pks12 -out &ltdomain_name&gt.pfx -in &ltpublic_certificate_name&gt.crt -inkey &ltprivate_key_name&gt.key -cafile &ltgodaddy_ca&gt.crt</code>
-	</p>
+	<pre class="code-block">
+		<code class="language-bash">
+			openssl pks12 -out &ltdomain_name&gt.pfx -in &ltpublic_certificate_name&gt.crt -inkey &ltprivate_key_name&gt.key -cafile &ltgodaddy_ca&gt.crt
+		</code>
+	</pre>
 	<ul>
 		<li class="body-text">
 			If the command above fails to load your private key file run the following command to correct the file's encoding.
-			After doing so rerun the previous openssl command but use the modified version of your private key.
+			After doing so rerun the previous <code class="language-bash">openssl</code> command but use the modified version of your private key.
 		</li>
 	</ul>
-	<p class="body-text">
-		<code>tail -c +4 &ltprivate_key_name&gt.key &gt &ltprivate_key_modified_name&gt.key</code>
-	</p>
+	<pre class="code-block">
+		<code class="language-bash">
+				tail -c +4 &ltprivate_key_name&gt.key &gt &ltprivate_key_modified_name&gt.key
+		</code>
+	</pre>
 
 	<p class="body-text">
-		Upon executing the 'openssl' command you will be prompted to enter a password to lock your PFX file.
+		Upon executing the <code class="language-bash">openssl</code> command you will be prompted to enter a password to lock your PFX file.
 	</p>
 
 	<h2 class="sub-title">Uploading PFX Certificate to Azure App Service</h2>
 	<p class="body-text">
-		On your app service resource head to the <strong>custom domains</strong> section and add an SSL binding to the domain
+		On your app service resource head to the <strong>Custom Domains</strong> section and add an <strong>SSL</strong> binding to the domain
 		which you generated your SSL certificates for. All you have to do is upload the certificate and enter the password
-		that you set for your PFX certificate using openssl.
+		that you set for your PFX certificate using <code class="language-bash">openssl</code>.
 	</p>
 </div>
 
