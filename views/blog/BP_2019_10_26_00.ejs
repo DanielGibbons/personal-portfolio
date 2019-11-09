@@ -60,23 +60,25 @@
 		</li>
 	</ul>
 
-	<div class="code-block custom-border">
-		<p>echo -e "************************************"</p>
-		<p>echo -e "Authenticating Shell using Azure CLI"</p>
-		<p>echo -e "************************************\n"</p>
-
-		<p>subscriptions="$(az.cmd login -o tsv | awk 'BEGIN { FS = "\t" } ; { print $2 " | " $4 }')"</p>
-
-		<p>echo "Subscription ID | Subscription Name"</p>
-		<p>echo "------------------------------------ | ------------------------------------"</p>
-		<p>echo "$subscriptions"</p>
-
-		<p>echo -e "\nEnter Subscription ID:"</p>
-		<p>read azure_subscription</p>
-
-		<p>echo -e "Setting account subscription"</p>
-		<p>az.cmd account set --subscription="${azure_subscription}"</p>
-	</div>
+	<pre class="code-block">
+		<code class="language-bash">
+			echo -e "************************************"
+			echo -e "Authenticating Shell using Azure CLI"
+			echo -e "************************************\n"
+	
+			subscriptions="$(az.cmd login -o tsv | awk 'BEGIN { FS = "\t" } ; { print $2 " | " $4 }')"
+	
+			echo "Subscription ID | Subscription Name"
+			echo "------------------------------------ | ------------------------------------"
+			echo "$subscriptions"
+	
+			echo -e "\nEnter Subscription ID:"
+			read azure_subscription
+	
+			echo -e "Setting account subscription"
+			az.cmd account set --subscription="${azure_subscription}"
+		</code>
+	</pre>
 
 	<h2 class="sub-title">Provision Resources using Terraform</h2>
 	<ul>
@@ -85,106 +87,108 @@
 		</li>
 	</ul>
 
-	<div class="code-block custom-border">
-		<p>variable "prefix" {</p>
-		<p class="indent-1">default = "test-dgio"</p>
-		<p>}</p>
-
-		<p>resource "azurerm_resource_group" "test_rg" {</p>
-		<p class="indent-1">name = "${var.prefix}-rg"</p>
-		<p class="indent-1">location = "East US"</p>
-		<p>}</p>
-
-		<p>resource "azurerm_virtual_network" "test_vnet" {</p>
-		<p class="indent-1">name = "${var.prefix}-vnet"</p>
-		<p class="indent-1">address_space = ["10.0.0.0/24"]</p>
-		<p class="indent-1">location = "${azurerm_resource_group.test_rg.location}"</p>
-		<p class="indent-1">resource_group_name = "${azurerm_resource_group.test_rg.name}"</p>
-		<p>}</p>
-
-		<p>resource "azurerm_subnet" "test_subnet" {</p>
-		<p class="indent-1">name = "${var.prefix}-vnet"</p>
-		<p class="indent-1">resource_group_name = "${azurerm_resource_group.test_rg.name}"</p>
-		<p class="indent-1">virtual_network_name = "${azurerm_virtual_network.test_rg.name}"</p>
-		<p class="indent-1">address_prefix = "10.0.0.0/27"</p>
-		<p>}</p>
-
-		<p>resource "azurerm_public_ip" "test_pip" {</p>
-		<p class="indent-1">name = "${var.prefix}-pip"</p>
-		<p class="indent-1">location = "${azurerm_resource_group.test_rg.location}"</p>
-		<p class="indent-1">resource_group_name = "${azurerm_resource_group.test_rg.name}"</p>
-		<p class="indent-1">allocation_method   = "Static"</p>
-		<p>}</p>
-
-		<p>resource "azurerm_network_interface" "test_nic" {</p>
-		<p class="indent-1">name = "${var.prefix}-nic"</p>
-		<p class="indent-1">location = "${azurerm_resource_group.test_rg.location}"</p>
-		<p class="indent-1">resource_group_name = "${azurerm_resource_group.test_rg.name}"</p>
-
-		<p class="indent-1">ip_configuration {</p>
-		<p class="indent-2">name = "test-ipconfig"</p>
-		<p class="indent-2">subnet_id = "${azurerm_subnet.test_subnet.id}"</p>
-		<p class="indent-2">private_ip_address_allocation = "Dynamic"</p>
-		<p class="indent-2">public_ip_address_id = "${azurerm_public_ip.test_pip.id}"</p>
-		<p class="indent-1">}</p>
-		<p>}</p>
-
-		<p>resource "azurerm_network_security_group" "test_nsg" {</p>
-		<p class="indent-1">name = "${var.prefix}-nsg"</p>
-		<p class="indent-1">location = "${azurerm_resource_group.test_rg.location}"</p>
-		<p class="indent-1">resource_group_name = "${azurerm_resource_group.test_rg.name}"</p>
-		<p>}</p>
-		  
-		<p>resource "azurerm_network_security_rule" "test_nsr" {</p>
-		<p class="indent-1">name = "Allow_All_SSH_Inbound_VM"</p>
-		<p class="indent-1">priority = 100</p>
-		<p class="indent-1">direction = "Inbound"</p>
-		<p class="indent-1">access = "Allow"</p>
-		<p class="indent-1">protocol = "Tcp"</p>
-		<p class="indent-1">source_port_range = "*"</p>
-		<p class="indent-1">destination_port_range = "22"</p>
-		<p class="indent-1">source_address_prefix = "*"</p>
-		<p class="indent-1">destination_address_prefix = "*"</p>
-		<p class="indent-1">resource_group_name = "${azurerm_resource_group.test_rg.name}"</p>
-		<p class="indent-1">network_security_group_name = "${azurerm_network_security_group.test_nsg.name}"</p>
-		<p>}</p>
-
-		<p>resource "azurerm_virtual_machine" "test_vm" {</p>
-		<p class="indent-1">name = "${var.prefix}-vm"</p>
-		<p class="indent-1">location = "${azurerm_resource_group.test_rg.location}"</p>
-		<p class="indent-1">resource_group_name = "${azurerm_resource_group.test_rg.name}"</p>
-		<p class="indent-1">network_interface_ids = ["${azurerm_network_interface.test_rg.id}"]</p>
-		<p class="indent-1">vm_size = "Standard_DS1_v2"</p>
-
-		<p class="indent-1">delete_os_disk_on_termination = true</p>
-		<p class="indent-1">delete_data_disks_on_termination = true</p>
-		<p class="indent-1">network_security_group_id = "${azurerm_network_security_group.test_nsg.id}"</p>
-
-		<p class="indent-1">storage_image_reference {</p>
-		<p class="indent-2">publisher = "Canonical"</p>
-		<p class="indent-2">offer = "UbuntuServer"</p>
-		<p class="indent-2">sku = "18.04-LTS"</p>
-		<p class="indent-2">version = "latest"</p>
-		<p class="indent-1">}</p>
-
-		<p class="indent-1">storage_os_disk {</p>
-		<p class="indent-2">name = "${var.prefix}-osdisk"</p>
-		<p class="indent-2">caching = "ReadWrite"</p>
-		<p class="indent-2">create_option = "FromImage"</p>
-		<p class="indent-2">managed_disk_type = "Standard_LRS"</p>
-		<p class="indent-1">}</p>
-
-		<p class="indent-1">os_profile {</p>
-		<p class="indent-2">computer_name = "${var.prefix}-vm"</p>
-		<p class="indent-2">admin_username = "testadmin"</p>
-		<p class="indent-2">admin_password = "Password1234!"</p>
-		<p class="indent-1">}</p>
-
-		<p class="indent-1">os_profile_linux_config {</p>
-		<p class="indent-2">disable_password_authentication = false</p>
-		<p class="indent-1">}</p>
-		<p>}</p>
-	</div>
+	<pre class="code-block">
+		<code class="language-hcl">
+			variable "prefix" {
+				default = "test-dgio"
+			}
+		
+			resource "azurerm_resource_group" "test_rg" {
+				name     = "${var.prefix}-rg"
+				location = "East US"
+			}
+		
+			resource "azurerm_virtual_network" "test_vnet" {
+				name                = "${var.prefix}-vnet"
+				address_space       = ["10.0.0.0/24"]
+				location            = "${azurerm_resource_group.test_rg.location}"
+				resource_group_name = "${azurerm_resource_group.test_rg.name}"
+			}
+		
+			resource "azurerm_subnet" "test_subnet" {
+				name                 = "${var.prefix}-vnet"
+				resource_group_name  = "${azurerm_resource_group.test_rg.name}"
+				virtual_network_name = "${azurerm_virtual_network.test_rg.name}"
+				address_prefix       = "10.0.0.0/27"
+			}
+		
+			resource "azurerm_public_ip" "test_pip" {
+				name                = "${var.prefix}-pip"
+				location            = "${azurerm_resource_group.test_rg.location}"
+				resource_group_name = "${azurerm_resource_group.test_rg.name}"
+				allocation_method   = "Static"
+			}
+		
+			resource "azurerm_network_interface" "test_nic" {
+				name                = "${var.prefix}-nic"
+				location            = "${azurerm_resource_group.test_rg.location}"
+				resource_group_name = "${azurerm_resource_group.test_rg.name}"
+		
+				ip_configuration {
+					name                          = "test-ipconfig"
+					subnet_id                     = "${azurerm_subnet.test_subnet.id}"</p>
+					private_ip_address_allocation = "Dynamic"</p>
+					public_ip_address_id          = "${azurerm_public_ip.test_pip.id}"</p>
+				}
+			}
+		
+			resource "azurerm_network_security_group" "test_nsg" {
+				name                = "${var.prefix}-nsg"
+				location            = "${azurerm_resource_group.test_rg.location}"
+				resource_group_name = "${azurerm_resource_group.test_rg.name}"
+			}
+					
+			resource "azurerm_network_security_rule" "test_nsr" {
+				name                        = "Allow_All_SSH_Inbound_VM"
+				priority                    = 100
+				direction                   = "Inbound"
+				access                      = "Allow"
+				protocol                    = "TCP"
+				source_port_range           = "*"
+				destination_port_range      = "22"
+				source_address_prefix       = "*"
+				destination_address_prefix  = "*"
+				resource_group_name         = "${azurerm_resource_group.test_rg.name}"
+				network_security_group_name = "${azurerm_network_security_group.test_nsg.name}"
+			}
+		
+			resource "azurerm_virtual_machine" "test_vm" {
+				name                  = "${var.prefix}-vm"
+				location              = "${azurerm_resource_group.test_rg.location}"
+				resource_group_name   = "${azurerm_resource_group.test_rg.name}"
+				network_interface_ids = ["${azurerm_network_interface.test_rg.id}"]
+				vm_size               = "Standard_DS1_v2"
+		
+				delete_os_disk_on_termination    = true
+				delete_data_disks_on_termination = true
+				network_security_group_id        = "${azurerm_network_security_group.test_nsg.id}"
+		
+				storage_image_reference {
+					publisher = "Canonical"
+					offer     = "UbuntuServer"
+					sku       = "18.04-LTS"
+					version   = "latest"
+				}
+		
+				storage_os_disk {
+					name              = "${var.prefix}-osdisk"
+					caching           = "ReadWrite"
+					create_option     = "FromImage"
+					managed_disk_type = "Standard_LRS"
+				}
+		
+				os_profile {
+					computer_name  = "${var.prefix}-vm"
+					admin_username = "testadmin"
+					admin_password = "Password1234!"
+				}
+		
+				os_profile_linux_config {
+					disable_password_authentication = false
+				}
+			}
+		</code>
+	</pre>
 
 	<ul>
 		<li class="body-text">

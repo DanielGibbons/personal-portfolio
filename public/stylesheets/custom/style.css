@@ -372,20 +372,9 @@ body {
   .blog-post-container p {
     padding-left: 20px; }
   .blog-post-container .code-block {
-    background-color: #e4e4e4;
-    font-size: 1.4rem;
-    margin-left: 20px;
-    margin-right: 20px;
     margin-top: 30px;
     margin-bottom: 30px;
-    padding: 10px; }
-    .blog-post-container .code-block p {
-      color: #e83e8c;
-      font-family: Mono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; }
-    .blog-post-container .code-block .indent-1 {
-      padding-left: 40px; }
-    .blog-post-container .code-block .indent-2 {
-      padding-left: 60px; }
+    font-size: 1.4rem; }
   .blog-post-container .body-text {
     font-size: 1.7rem;
     margin-bottom: 15px; }
