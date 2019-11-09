@@ -156,6 +156,11 @@ body {
 			border-color: lighten(red, 10%);
 			background-color: lighten(red, 40%);
 		}
+
+		&.javascript {
+			border-color: lighten(turquoise, 10%);
+			background-color: lighten(turquoise, 40%);
+		}
 	}
 
 }

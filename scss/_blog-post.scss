@@ -34,11 +34,12 @@
 		}
 
 		code {
-			padding: 2px;
+			padding: 1px;
 		}
 
 		strong {
-			padding: 2px;
+			padding: 1px;
+			border-radius: 0.3em;
 			background-color: lighten($charcoal-grey, 65%);
 		}
 	}

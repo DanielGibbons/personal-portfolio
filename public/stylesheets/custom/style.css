@@ -105,6 +105,9 @@ body {
     .tags-container .tag.ssl {
       border-color: #ff3333;
       background-color: #ffcccc; }
+    .tags-container .tag.javascript {
+      border-color: #6ce7db;
+      background-color: #f0fcfb; }
 
 @media (min-width: 576px) {
   .page-title-container {
@@ -381,9 +384,10 @@ body {
     .blog-post-container .body-text a {
       font-weight: 600; }
     .blog-post-container .body-text code {
-      padding: 2px; }
+      padding: 1px; }
     .blog-post-container .body-text strong {
-      padding: 2px;
+      padding: 1px;
+      border-radius: 0.3em;
       background-color: #e4e4e4; }
   .blog-post-container .download-file-container {
     text-align: center;
