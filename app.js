@@ -19,6 +19,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// www redirect
+app.set('trust proxy', true);
+app.use(function (req, res, next) {
+	if (req.headers.host.slice(0, 4) === 'www.') {
+        var newHost = req.headers.host.slice(4);
+        return res.redirect(301, req.protocol + '://' + newHost + req.originalUrl);
+    }
+    next();
+});
+
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
@@ -35,16 +45,6 @@ app.use(function (err, req, res, next) {
 	// render the error page
 	res.status(err.status || 500);
 	res.render('error', { viewData: new ViewData('Error', 'error') });
-});
-
-// www redirect
-app.set('trust proxy', true);
-app.use(function (req, res, next) {
-	if (req.headers.host.slice(0, 4) === 'www.') {
-        var newHost = req.headers.host.slice(4);
-        return res.redirect(301, req.protocol + '://' + newHost + req.originalUrl);
-    }
-    next();
 });
 
 module.exports = app;
