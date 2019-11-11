@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const expressSitemapXml = require('express-sitemap-xml')
-var sitemap = require('./sitemaps/sitemap.js')
+var sitemap = require('./data/sitemap.js')
 
 var indexRouter = require('./routes/index');
 var ViewData = require("./models/view-data.js");
