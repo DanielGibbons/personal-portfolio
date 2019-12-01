@@ -1,6 +1,8 @@
-function ViewData(title, action) {
+function ViewData(title, section, relUrl) {
+	this.baseUrl = "https://dangibbons.io"
 	this.title = title;
-	this.action = action;
+	this.section = section;
+	this.relUrl = relUrl;
 }
 
 module.exports = ViewData;

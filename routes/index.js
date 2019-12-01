@@ -16,7 +16,7 @@ router.get('/blog', function (req, res, next) {
 
 /* GET blog page. */
 router.get('/blog/:blogId', function (req, res, next) {
-	res.render(`blog/${req.params.blogId}`, { viewData: new ViewData(`Blog | ${blogPosts[req.params.blogId].shortTitle}`, 'blog'), blogData: blogPosts[req.params.blogId] });
+	res.render(`blog/${req.params.blogId}`, { viewData: new ViewData(`Blog | ${blogPosts[req.params.blogId].shortTitle}`, 'blog', `/blog/${req.params.blogId}`), blogData: blogPosts[req.params.blogId] });
 });
 
 /* GET projects page. */

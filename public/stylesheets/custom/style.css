@@ -109,6 +109,9 @@ body {
       border-color: #6ce7db;
       background-color: #f0fcfb; }
 
+.comments-container {
+  margin-top: 50px; }
+
 @media (min-width: 576px) {
   .page-title-container {
     text-align: left; }
