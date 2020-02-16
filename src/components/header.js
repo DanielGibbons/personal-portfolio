@@ -13,14 +13,14 @@ const Header = ( {siteTitle }) => (
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">
-            <li className={"nav-item " + (window.location.pathname === "/" ? "active" : "")}>
-              <Link className="nav-link" to="/">About</Link>
+            <li className="nav-item">
+              <Link className="nav-link" activeClassName="active" to="/">About</Link>
             </li>
-            <li className={"nav-item " + (window.location.pathname.includes("/blog") ? "active" : "")}>
-              <Link className="nav-link" to="/blog">Blog</Link>
+            <li className="nav-item">
+              <Link className="nav-link" activeClassName="active" to="/blog">Blog</Link>
             </li>
-            <li className={"nav-item " + (window.location.pathname === "/projects" ? "active" : "")}>
-              <Link className="nav-link" to="/projects">Projects</Link>
+            <li className="nav-item">
+              <Link className="nav-link" activeClassName="active" to="/projects">Projects</Link>
             </li>
           </ul>
         </div>
