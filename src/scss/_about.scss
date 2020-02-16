@@ -1,0 +1,57 @@
+.about-container {
+
+	.mugshot {
+
+		width: 50%;
+		margin: 10px auto;
+
+		img {
+			width: 100%;
+			height: auto;
+			padding: 2px;
+			border: 2px solid lighten($charcoal-grey, 20%);
+			border-radius: 10px;
+			box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
+		}
+	}
+
+	.about-description {
+
+		i {
+			color: #f00;
+		}
+
+		a {
+			font-weight: 600;
+		}
+		text-align: center;
+		font-size: 1.7rem;
+		font-weight: 300;
+		margin-bottom: 15px;
+		margin-top: 25px;
+	}
+
+	.site-description {
+
+		strong {
+			font-weight: 700;
+		}
+		text-align: center;
+		font-size: 1.7rem;
+		font-weight: 300;
+		margin-bottom: 15px;
+		margin-top: 25px;
+	}
+
+}
+
+@media (min-width: 576px) {
+
+	.about-container {
+		.about-description {
+			margin-top: 0px;
+			margin-bottom: 0px;
+		}
+	}
+
+}
