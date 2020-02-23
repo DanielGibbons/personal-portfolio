@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `dangibbons.io`,
+    baseUrl: `https://dangibbons.io`,
     description: `My personal website for technology related content.`,
     author: `@dangibbons`,
   },
@@ -20,6 +21,12 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `dangibbons-io`
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
