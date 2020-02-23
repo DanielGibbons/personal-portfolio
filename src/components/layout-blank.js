@@ -8,6 +8,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+import "../bootstrap/bootstrap-reboot.min.css"
+import "../bootstrap/bootstrap-grid.min.css"
+import "../bootstrap/bootstrap.min.css"
 import "../scss/style.scss"
 
 const LayoutBlank = ({ children }) => (
