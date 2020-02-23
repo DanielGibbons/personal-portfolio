@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "personal-website",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "My personal portfolio website / blog",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Dan Gibbons <dangibbons.dev@gmail.com>",
   "dependencies": {
     "babel-plugin-prismjs": "^2.0.1",
     "babel-preset-gatsby": "^0.2.29",
